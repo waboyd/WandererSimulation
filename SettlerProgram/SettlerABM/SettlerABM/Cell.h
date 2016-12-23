@@ -1,26 +1,39 @@
 #ifndef CELL_H
 #define CELL_H
 
+#define MAX_GEN_RATE	3
+#define MAX_NUM_FRUIT	100
+
 #include <string>
 #include <vector>
 #include <list>
 #include <iostream>
 #include <assert.h>
+#include <random>
 
 #include "Gatherer.h"
 
 class Cell
 {
+	friend class Map;
+
 private:
-	Gatherer* owner;
+	Gatherer* owner = NULL;
 
 	int num_fruit;
 
+	int gen_rate;
+
+	int row_num;
+
+	int col_num;
 
 protected:
 	void advance_time();
 
 public:
+	Cell(int row, int col);
+
 	bool isFree();
 
 	void occupy(Gatherer* new_owner);
@@ -30,6 +43,10 @@ public:
 	int get_num_fruit();
 
 	int remove_fruit(int amount);
+
+	int get_row_num();
+
+	int get_col_num();
 
 };
 #endif

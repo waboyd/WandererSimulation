@@ -15,23 +15,22 @@ class Gatherer
 private:
 	int view_range;
 
-	Cell location;
+	Cell* location;
 
-	boolean isSettled;
+	bool isSettled;
 
 	int appetite;
 
 	int fruit_saved;
 
-	Cell destination;
+	Cell* destination;
 
-	Cell cell;
-	Map map;
+	Map* map;
 
 public:
 	Cell find_best_place();
 
-	move_to_cell(Cell new_cell);
+	void move_to_cell(Cell* new_cell);
 
 	void settle();
 
