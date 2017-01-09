@@ -9,6 +9,9 @@
 
 #include "Cell.h"
 
+class Cell;
+class Gatherer;
+
 class Map
 {
 private:
@@ -16,11 +19,12 @@ private:
 
 	int num_cols;
 
-	std::vector<std::vector<Cell*>> cells;
-
-
 public:
 	Map(int rows, int cols);
+
+	~Map();
+
+	std::vector<std::vector<Cell*>> cells;
 
 	void advance_time();
 

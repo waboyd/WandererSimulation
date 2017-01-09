@@ -21,6 +21,18 @@ Map::Map(int rows, int cols)
 	cells = newMap;
 }
 
+Map::~Map()
+{
+	// Delete all cells of the map.
+	while (!cells.empty()) {
+		while (!cells.back().empty()) {
+			delete (cells.back().back());
+			cells.back().pop_back();
+		}
+		cells.pop_back();
+	}
+}
+
 void Map::advance_time()
 {
 	for (int rowNum = 0; rowNum < num_rows; rowNum++) {

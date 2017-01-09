@@ -10,6 +10,9 @@
 #include "Cell.h"
 #include "Map.h"
 
+class Cell;
+class Map;
+
 class Gatherer
 {
 private:
@@ -28,7 +31,11 @@ private:
 	Map* map;
 
 public:
-	Cell find_best_place();
+	Gatherer(Map* map_ptr, Cell* start_cell);
+
+	Gatherer(Map* map_ptr, Cell* start_cell, int appetite);
+
+	Cell* find_best_place();
 
 	void move_to_cell(Cell* new_cell);
 
@@ -37,6 +44,5 @@ public:
 	void remain();
 
 	void abandon();
-
 };
 #endif

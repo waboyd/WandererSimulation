@@ -112,6 +112,7 @@
   <ItemGroup>
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Gatherer.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Settler.cpp" />
   </ItemGroup>

@@ -13,6 +13,8 @@
 
 #include "Gatherer.h"
 
+class Gatherer;
+class Map;
 class Cell
 {
 	friend class Map;
