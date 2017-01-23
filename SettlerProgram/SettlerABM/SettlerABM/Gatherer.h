@@ -1,6 +1,9 @@
 #ifndef GATHERER_H
 #define GATHERER_H
 
+#define PERSON_APPETITE			5
+#define MIN_SETTLE_FRUIT		20
+
 #include <string>
 #include <vector>
 #include <list>
@@ -24,16 +27,13 @@ private:
 
 	int appetite;
 
-	int fruit_saved;
+	//int fruit_saved;
 
-	Cell* destination;
+	int min_settle_fruit;	// minimum amount of fruit for the person to settle the location
+
+	Cell* destination = NULL;
 
 	Map* map;
-
-public:
-	Gatherer(Map* map_ptr, Cell* start_cell);
-
-	Gatherer(Map* map_ptr, Cell* start_cell, int appetite);
 
 	Cell* find_best_place();
 
@@ -44,5 +44,12 @@ public:
 	void remain();
 
 	void abandon();
+
+public:
+	Gatherer(Map* map_ptr, Cell* start_cell);
+
+	Gatherer(Map* map_ptr, Cell* start_cell, int appetite);
+
+	void free_will();
 };
 #endif

@@ -42,10 +42,10 @@ void Map::advance_time()
 	}
 }
 
-Cell* Map::best_visible_cell(Cell start_cell)
-{
-	return 0;
-}
+//Cell* Map::best_visible_cell(Cell start_cell)
+//{
+//	return 0;
+//}
 
 int Map::get_num_rows() {
 	return num_rows;

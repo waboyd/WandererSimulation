@@ -28,7 +28,7 @@ public:
 
 	void advance_time();
 
-	Cell* best_visible_cell(Cell start_cell);
+	//Cell* best_visible_cell(Cell start_cell);
 
 	int get_num_rows();
 

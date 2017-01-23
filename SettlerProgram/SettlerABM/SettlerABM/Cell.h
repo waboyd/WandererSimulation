@@ -4,6 +4,8 @@
 #define MAX_GEN_RATE	3
 #define MAX_NUM_FRUIT	100
 
+#define FRUIT_REGEN_RATE		3
+
 #include <string>
 #include <vector>
 #include <list>
