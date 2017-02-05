@@ -6,18 +6,18 @@
 
 #include "Gatherer.h"
 
-Gatherer::Gatherer(Map* map_ptr, Cell* start_cell) {
+Gatherer::Gatherer(MapState* map_ptr, MapCell* start_cell) {
 	map = map_ptr;
 	location = start_cell;
 }
 
-Gatherer::Gatherer(Map* map_ptr, Cell* start_cell, int appetite) {
+Gatherer::Gatherer(MapState* map_ptr, MapCell* start_cell, int appetite) {
 	map = map_ptr;
 	location = start_cell;
 	this->appetite = appetite;
 }
 
-Cell* Gatherer::find_best_place()
+MapCell* Gatherer::find_best_place()
 {
 	// Find the best visible unoccupied cell to settle.  Return a pointer to that cell.
 	int numRows = map->get_num_rows();
@@ -31,7 +31,7 @@ int leftCol, rightCol;
 
 // The best cell is the one with the most fruit;
 int fruitHere = location->get_num_fruit();
-Cell* bestCell = NULL;
+MapCell* bestCell = NULL;
 int maxFruit = 0;
 
 // Get the north and south boundaries of the search.
@@ -55,7 +55,7 @@ for (int checkRow = topRow; checkRow <= botRow; checkRow++) {
 
 	// Search this row for the best unoccupied cell.
 	for (int checkCol = leftCol; checkCol <= rightCol; checkCol++) {
-		Cell* checkCell = map->cells[checkRow][checkCol];
+		MapCell* checkCell = map->cells[checkRow][checkCol];
 		int checkNumFruit = checkCell->get_num_fruit();
 		if (checkNumFruit > maxFruit) {
 			bestCell = checkCell;
@@ -75,7 +75,7 @@ destination = bestCell;
 return bestCell;
 }
 
-void Gatherer::move_to_cell(Cell* new_cell)
+void Gatherer::move_to_cell(MapCell* new_cell)
 {
 	location = new_cell;
 }

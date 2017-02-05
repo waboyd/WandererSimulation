@@ -1,10 +1,5 @@
-﻿  Cell.cpp
-  Generating Code...
-  Compiling...
-  Gatherer.cpp
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  main.cpp
-  Map.cpp
+﻿  OutputMap.cpp
+c:\users\william\documents\asu\indstudy\runningtimeestimator\settlerprogram\settlerabm\settlerabm\outputmap.h(23): warning C4200: nonstandard extension used: zero-sized array in struct/union
+  c:\users\william\documents\asu\indstudy\runningtimeestimator\settlerprogram\settlerabm\settlerabm\outputmap.h(23): note: This member will be ignored by a defaulted constructor or copy/move assignment operator
   SettlerABM.vcxproj -> C:\Users\William\Documents\ASU\IndStudy\RunningTimeEstimator\SettlerProgram\SettlerABM\Debug\SettlerABM.exe
   SettlerABM.vcxproj -> C:\Users\William\Documents\ASU\IndStudy\RunningTimeEstimator\SettlerProgram\SettlerABM\Debug\SettlerABM.pdb (Partial PDB)

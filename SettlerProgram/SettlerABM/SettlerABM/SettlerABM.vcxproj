@@ -110,17 +110,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="MapCell.cpp" />
     <ClCompile Include="Gatherer.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Map.cpp" />
-    <ClCompile Include="Settler.cpp" />
+    <ClCompile Include="MapState.cpp" />
+    <ClCompile Include="OutputMap.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Cell.h" />
+    <ClInclude Include="MapCell.h" />
     <ClInclude Include="Gatherer.h" />
-    <ClInclude Include="Map.h" />
-    <ClInclude Include="Settler.h" />
+    <ClInclude Include="MapState.h" />
+    <ClInclude Include="OutputMap.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

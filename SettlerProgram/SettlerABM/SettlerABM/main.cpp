@@ -1,6 +1,6 @@
 #include "Gatherer.h"
-#include "Map.h"
-#include "Cell.h"
+#include "MapState.h"
+#include "MapCell.h"
 
 #define	NUM_ROWS				200
 #define NUM_COLS				250

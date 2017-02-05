@@ -10,18 +10,18 @@
 #include <iostream>
 #include <assert.h>
 
-#include "Cell.h"
-#include "Map.h"
+#include "MapCell.h"
+#include "MapState.h"
 
-class Cell;
-class Map;
+class MapCell;
+class MapState;
 
 class Gatherer
 {
 private:
 	int view_range;
 
-	Cell* location;
+	MapCell* location;
 
 	bool isSettled;
 
@@ -31,13 +31,13 @@ private:
 
 	int min_settle_fruit;	// minimum amount of fruit for the person to settle the location
 
-	Cell* destination = NULL;
+	MapCell* destination = NULL;
 
-	Map* map;
+	MapState* map;
 
-	Cell* find_best_place();
+	MapCell* find_best_place();
 
-	void move_to_cell(Cell* new_cell);
+	void move_to_cell(MapCell* new_cell);
 
 	void settle();
 
@@ -46,10 +46,12 @@ private:
 	void abandon();
 
 public:
-	Gatherer(Map* map_ptr, Cell* start_cell);
+	Gatherer(MapState* map_ptr, MapCell* start_cell);
 
-	Gatherer(Map* map_ptr, Cell* start_cell, int appetite);
+	Gatherer(MapState* map_ptr, MapCell* start_cell, int appetite);
 
 	void free_will();
+
+	MapCell* get_location();
 };
 #endif
