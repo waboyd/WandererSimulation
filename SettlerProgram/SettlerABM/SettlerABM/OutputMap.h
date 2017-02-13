@@ -16,23 +16,25 @@ private:
 
 	int time;
 
-	std::vector<bool> is_occupied;
+	std::vector<std::vector<bool>> is_occupied;
 	
-	std::vector<int> num_people;
+	std::vector<std::vector<int>> num_people;
 	
-	int num_fruit[];
+	std::vector<std::vector<int>> num_fruit;
 
 
 public:
+	OutputMap(int num_rows, int num_cols, int time);
+
 	void create_text_map(std::string file_path);
 
-	void setNotOccupied(int row_num, int col_num);
+	void set_not_occupied(int row_num, int col_num);
 
-	void setOccupied(int row_num, int col_num);
+	void set_occupied(int row_num, int col_num);
 
-	void setNumFruit(int row_num, int col_num, int number_fruit);
+	void set_num_fruit(int row_num, int col_num, int number_fruit);
 
-	void setNumWanderers(int row_num, int col_num, int num_wanderers);
+	void set_num_people(int row_num, int col_num, int num_people);
 
 };
 #endif
