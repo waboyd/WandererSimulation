@@ -7,6 +7,8 @@
 #include <iostream>
 #include <assert.h>
 
+#define MAX_CHARACTERS_PER_ENTRY	4
+
 class OutputMap
 {
 private:
@@ -16,7 +18,7 @@ private:
 
 	int time;
 
-	std::vector<std::vector<bool>> is_occupied;
+	std::vector<std::vector<bool>> is_settled;
 	
 	std::vector<std::vector<int>> num_people;
 	
@@ -28,9 +30,9 @@ public:
 
 	void create_text_map(std::string file_path);
 
-	void set_not_occupied(int row_num, int col_num);
+	void set_not_settled(int row_num, int col_num);
 
-	void set_occupied(int row_num, int col_num);
+	void set_settled(int row_num, int col_num);
 
 	void set_num_fruit(int row_num, int col_num, int number_fruit);
 
