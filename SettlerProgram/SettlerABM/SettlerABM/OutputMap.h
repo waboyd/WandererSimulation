@@ -24,11 +24,17 @@ private:
 	
 	std::vector<std::vector<int>> num_fruit;
 
+	std::string filepath = "";
+
 
 public:
 	OutputMap(int num_rows, int num_cols, int time);
 
+	~OutputMap();
+
 	void create_text_map(std::string file_path);
+
+	void create_text_map();
 
 	void set_not_settled(int row_num, int col_num);
 
@@ -37,6 +43,8 @@ public:
 	void set_num_fruit(int row_num, int col_num, int number_fruit);
 
 	void set_num_people(int row_num, int col_num, int num_people);
+
+	void set_filepath(std::string filepath);
 
 };
 #endif

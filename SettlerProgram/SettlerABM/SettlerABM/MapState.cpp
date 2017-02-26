@@ -54,3 +54,19 @@ int MapState::get_num_rows() {
 int MapState::get_num_cols() {
 	return num_cols;
 }
+
+void MapState::create_output_map() {
+	std::string mapFile;
+	mapFile = OUTPUT_MAP_FOLDER;
+	mapFile += "state_map_time_" + std::to_string(this->time);
+
+	// ToDo: complete this method definition.
+	// Create a temporary OutputMap object.
+
+	// Set the values of the OutputMap object.
+
+	// Make the map text file.
+
+	// Delete the OutputMap object.
+
+}

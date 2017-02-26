@@ -32,6 +32,8 @@ private:
 
 	int col_num;
 
+	int num_gatherers;
+
 protected:
 	void advance_time();
 

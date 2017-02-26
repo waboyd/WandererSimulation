@@ -9,6 +9,8 @@
 
 #include "MapCell.h"
 
+#define OUTPUT_MAP_FOLDER	"../../../OutputMaps/"
+
 class MapCell;
 class Gatherer;
 

@@ -27,6 +27,29 @@ OutputMap::OutputMap(int num_rows, int num_cols, int time)
 	}
 }
 
+OutputMap::~OutputMap()
+{
+	// Delete all vectors of the object.
+	while (!this->is_settled.empty()) {
+		this->is_settled.back().clear();
+		this->is_settled.pop_back();
+	}
+	this->is_settled.clear();
+
+	while (!this->num_people.empty()) {
+		this->num_people.back().clear();
+		this->num_people.pop_back();
+	}
+	this->num_people.clear();
+
+	while (!this->num_fruit.empty()) {
+		this->num_fruit.back().clear();
+		this->num_fruit.pop_back();
+	}
+	this->num_fruit.clear();
+
+}
+
 void OutputMap::create_text_map(std::string file_path)
 {
 	std::string header, body, row, entry;
@@ -69,6 +92,18 @@ void OutputMap::create_text_map(std::string file_path)
 	outstream << header;
 	outstream << body;
 	outstream.close();
+
+	if (this->filepath == "")
+		this->filepath = filepath;
+}
+
+void OutputMap::create_text_map()
+{
+	if (this->filepath == "") {
+		std::cout << "OutputMap::create_text_map() was called with no filepath set.\n";
+		return;
+	}
+	create_text_map(this->filepath);
 }
 
 void OutputMap::set_not_settled(int row_num, int col_num)
@@ -125,4 +160,9 @@ void OutputMap::set_num_people(int row_num, int col_num, int num_people)
 	}
 
 	this->num_people[row_num][col_num] = num_people;
+}
+
+void OutputMap::set_filepath(std::string filepath)
+{
+	this->filepath = filepath;
 }
