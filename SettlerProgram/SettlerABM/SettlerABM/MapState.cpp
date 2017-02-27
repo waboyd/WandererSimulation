@@ -34,12 +34,16 @@ MapState::~MapState()
 }
 
 void MapState::advance_time()
+// Allow a time step to pass for the map.
 {
 	for (int rowNum = 0; rowNum < num_rows; rowNum++) {
 		for (int colNum = 0; colNum < num_cols; colNum++) {
 			cells[rowNum][colNum]->advance_time();
 		}
 	}
+
+	// Make a text file for the current state of the map.
+	this->create_output_map();
 }
 
 //MapCell* Map::best_visible_cell(MapCell start_cell)
@@ -47,26 +51,44 @@ void MapState::advance_time()
 //	return 0;
 //}
 
-int MapState::get_num_rows() {
+int MapState::get_num_rows()
+{
 	return num_rows;
 }
 
-int MapState::get_num_cols() {
+int MapState::get_num_cols()
+{
 	return num_cols;
 }
 
-void MapState::create_output_map() {
+void MapState::create_output_map()
+// Make a text file that shows the current state of the map.
+{
 	std::string mapFile;
 	mapFile = OUTPUT_MAP_FOLDER;
 	mapFile += "state_map_time_" + std::to_string(this->time);
 
 	// ToDo: complete this method definition.
 	// Create a temporary OutputMap object.
+	OutputMap mapObject = OutputMap(this->num_rows, this->num_cols, this->time);
 
 	// Set the values of the OutputMap object.
+	for (int rowNum = 0; rowNum < this->num_rows; rowNum++) {
+		for (int colNum = 0; colNum < this->num_cols; colNum++) {
+			mapObject.set_filepath(mapFile);
+			mapObject.set_num_fruit(rowNum, colNum, cells[rowNum][colNum]->get_num_fruit());
+			mapObject.set_num_people(rowNum, colNum, cells[rowNum][colNum]->get_num_gatherers());
+			if (cells[rowNum][colNum]->isFree()) {
+				mapObject.set_not_settled(rowNum, colNum);
+			}
+			else {
+				mapObject.set_settled(rowNum, colNum);
+			}
+		}
+	}
 
 	// Make the map text file.
+	mapObject.create_text_map();
 
-	// Delete the OutputMap object.
-
+	// mapObject should be deleted as a local object upon return from this function.
 }

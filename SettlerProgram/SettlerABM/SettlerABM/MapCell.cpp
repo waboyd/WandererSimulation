@@ -16,6 +16,7 @@ MapCell::MapCell(int row, int col)
 	col_num = col;
 	gen_rate = rand_rate(rand_engine);
 	num_fruit = rand_num_fruit(rand_engine);
+	num_gatherers = 0;
 }
 
 bool MapCell::isFree()
@@ -27,12 +28,14 @@ bool MapCell::isFree()
 		return false;
 }
 
-void MapCell::occupy(Gatherer* new_owner)
+void MapCell::settle(Gatherer* new_owner)
+// A settler becomes the designated owner of the cell.
 {
 	this->owner = new_owner;
 }
 
 void MapCell::abandon()
+// A settler gives up the status as owner of this cell.
 {
 	this->owner = NULL;
 }
@@ -76,4 +79,25 @@ int MapCell::get_row_num()
 int MapCell::get_col_num()
 {
 	return col_num;
+}
+
+int MapCell::get_num_gatherers()
+{
+	return num_gatherers;
+}
+
+void MapCell::arrive(Gatherer* gatherer)
+// A single gatherer arrives at the cell.  This is separate from the settle() method.
+{
+	num_gatherers += 1;
+}
+
+void MapCell::leave(Gatherer* gatherer)
+// A single gatherer moves from this cell to another location.  This is separate from the abandon() method.
+{
+	num_gatherers -= 1;
+	if (num_gatherers < 0) {
+		std::cout << "A negative number of gatherers occurred at Row " << row_num << ", Column " << col_num << ".\n";
+		num_gatherers = 0;
+	}
 }

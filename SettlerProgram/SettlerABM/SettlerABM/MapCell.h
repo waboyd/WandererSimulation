@@ -42,7 +42,7 @@ public:
 
 	bool isFree();
 
-	void occupy(Gatherer* new_owner);
+	void settle(Gatherer* new_owner);
 
 	void abandon();
 
@@ -54,5 +54,10 @@ public:
 
 	int get_col_num();
 
+	int get_num_gatherers();
+
+	void arrive(Gatherer* gatherer);
+
+	void leave(Gatherer* gatherer);
 };
 #endif

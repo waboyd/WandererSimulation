@@ -8,6 +8,7 @@
 #include <assert.h>
 
 #include "MapCell.h"
+#include "OutputMap.h"
 
 #define OUTPUT_MAP_FOLDER	"../../../OutputMaps/"
 

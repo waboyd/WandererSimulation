@@ -9,12 +9,14 @@
 Gatherer::Gatherer(MapState* map_ptr, MapCell* start_cell) {
 	map = map_ptr;
 	location = start_cell;
+	start_cell->arrive(this);
 }
 
 Gatherer::Gatherer(MapState* map_ptr, MapCell* start_cell, int appetite) {
 	map = map_ptr;
 	location = start_cell;
 	this->appetite = appetite;
+	start_cell->arrive(this);
 }
 
 MapCell* Gatherer::find_best_place()
@@ -27,62 +29,64 @@ MapCell* Gatherer::find_best_place()
 	int currentCol = location->get_col_num();
 
 	int topRow, botRow;
-int leftCol, rightCol;
+	int leftCol, rightCol;
 
-// The best cell is the one with the most fruit;
-int fruitHere = location->get_num_fruit();
-MapCell* bestCell = NULL;
-int maxFruit = 0;
+	// The best cell is the one with the most fruit;
+	int fruitHere = location->get_num_fruit();
+	MapCell* bestCell = NULL;
+	int maxFruit = 0;
 
-// Get the north and south boundaries of the search.
-topRow = currentRow - view_range;
-if (topRow < 0)
-	topRow = 0;
-botRow = currentRow + view_range;
-if (botRow >= numRows)
-botRow = numRows;
+	// Get the north and south boundaries of the search.
+	topRow = currentRow - view_range;
+	if (topRow < 0)
+		topRow = 0;
+	botRow = currentRow + view_range;
+	if (botRow >= numRows)
+	botRow = numRows;
 
-for (int checkRow = topRow; checkRow <= botRow; checkRow++) {
-	// Get boundaries for square search area, with corners at North, South, East, West.
-	int yDist = abs(checkRow - currentRow);
-	int xDist = view_range - yDist;
-	leftCol = currentCol - xDist;
-	if (leftCol < 0)
-		leftCol = 0;
-	rightCol = currentCol + xDist;
-	if (rightCol >= numCols)
-		rightCol = numCols - 1;
+	for (int checkRow = topRow; checkRow <= botRow; checkRow++) {
+		// Get boundaries for square search area, with corners at North, South, East, West.
+		int yDist = abs(checkRow - currentRow);
+		int xDist = view_range - yDist;
+		leftCol = currentCol - xDist;
+		if (leftCol < 0)
+			leftCol = 0;
+		rightCol = currentCol + xDist;
+		if (rightCol >= numCols)
+			rightCol = numCols - 1;
 
-	// Search this row for the best unoccupied cell.
-	for (int checkCol = leftCol; checkCol <= rightCol; checkCol++) {
-		MapCell* checkCell = map->cells[checkRow][checkCol];
-		int checkNumFruit = checkCell->get_num_fruit();
-		if (checkNumFruit > maxFruit) {
-			bestCell = checkCell;
-			maxFruit = checkNumFruit;
+		// Search this row for the best unoccupied cell.
+		for (int checkCol = leftCol; checkCol <= rightCol; checkCol++) {
+			MapCell* checkCell = map->cells[checkRow][checkCol];
+			int checkNumFruit = checkCell->get_num_fruit();
+			if (checkNumFruit > maxFruit) {
+				bestCell = checkCell;
+				maxFruit = checkNumFruit;
+			}
 		}
+
 	}
 
-}
+	// If there is not much difference between this cell and the best cell, staying here looks better.
+	if ((maxFruit <= fruitHere + appetite) && (location->isFree())) {
+		destination = location;
+		return location;
+	}
 
-// If there is not much difference between this cell and the best cell, staying here looks better.
-if ((maxFruit <= fruitHere + appetite) && (location->isFree())) {
-	destination = location;
-	return location;
-}
-
-destination = bestCell;
-return bestCell;
+	destination = bestCell;
+	return bestCell;
 }
 
 void Gatherer::move_to_cell(MapCell* new_cell)
 {
+	location->leave(this);
 	location = new_cell;
+	location->arrive(this);
 }
 
 void Gatherer::settle()
 {
-	location->occupy(this);
+	location->settle(this);
 	isSettled = true;
 }
 
