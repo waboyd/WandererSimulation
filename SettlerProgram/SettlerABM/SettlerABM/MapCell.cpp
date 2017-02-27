@@ -55,6 +55,7 @@ void MapCell::advance_time()
 //		owner->remain();
 //		num_fruit += gen_rate;
 //	}
+
 }
 
 int MapCell::remove_fruit(int amount)

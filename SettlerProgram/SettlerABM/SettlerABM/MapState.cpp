@@ -19,6 +19,7 @@ MapState::MapState(int rows, int cols)
 		}
 	}
 	cells = newMap;
+	time = 0;
 }
 
 MapState::~MapState()
@@ -41,7 +42,7 @@ void MapState::advance_time()
 			cells[rowNum][colNum]->advance_time();
 		}
 	}
-
+	time += 1;
 	// Make a text file for the current state of the map.
 	this->create_output_map();
 }
@@ -66,7 +67,7 @@ void MapState::create_output_map()
 {
 	std::string mapFile;
 	mapFile = OUTPUT_MAP_FOLDER;
-	mapFile += "state_map_time_" + std::to_string(this->time);
+	mapFile += "state_map_time_" + std::to_string(this->time) + ".txt";
 
 	// ToDo: complete this method definition.
 	// Create a temporary OutputMap object.

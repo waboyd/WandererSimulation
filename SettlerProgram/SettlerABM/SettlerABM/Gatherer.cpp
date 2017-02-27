@@ -9,6 +9,7 @@
 Gatherer::Gatherer(MapState* map_ptr, MapCell* start_cell) {
 	map = map_ptr;
 	location = start_cell;
+	this->appetite = PERSON_APPETITE;
 	start_cell->arrive(this);
 }
 
