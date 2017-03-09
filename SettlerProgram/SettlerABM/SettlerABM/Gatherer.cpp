@@ -11,6 +11,7 @@ Gatherer::Gatherer(MapState* map_ptr, MapCell* start_cell) {
 	location = start_cell;
 	this->appetite = PERSON_APPETITE;
 	start_cell->arrive(this);
+	view_range = VIEW_RANGE;
 }
 
 Gatherer::Gatherer(MapState* map_ptr, MapCell* start_cell, int appetite) {
@@ -18,6 +19,7 @@ Gatherer::Gatherer(MapState* map_ptr, MapCell* start_cell, int appetite) {
 	location = start_cell;
 	this->appetite = appetite;
 	start_cell->arrive(this);
+	view_range = VIEW_RANGE;
 }
 
 MapCell* Gatherer::find_best_place()

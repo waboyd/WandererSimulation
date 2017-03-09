@@ -3,6 +3,7 @@
 
 #define PERSON_APPETITE			5
 #define MIN_SETTLE_FRUIT		20
+#define VIEW_RANGE				4
 
 #include <string>
 #include <vector>

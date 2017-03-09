@@ -46,8 +46,8 @@ int main() {
 	//OutputMap testOutputMap = OutputMap(3, 2, 0);
 	//testOutputMap.set_num_fruit(1, 1, 13);
 	//testOutputMap.create_text_map(outfile);
-	//std::string dummy;
-	//std::cin >> dummy;
+	std::string dummy;
+	std::cin >> dummy;
 	//// End of test code.
 	return 0;
 }
