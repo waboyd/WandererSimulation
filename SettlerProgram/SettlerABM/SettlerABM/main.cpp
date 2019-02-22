@@ -1,3 +1,5 @@
+// Created by William Boyd of Arizona State University.
+
 #include "Gatherer.h"
 #include "MapState.h"
 #include "MapCell.h"

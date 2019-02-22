@@ -1,3 +1,5 @@
+// Created by William Boyd of Arizona State University.
+
 #include <string>
 #include <vector>
 #include <list>
